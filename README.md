@@ -4,13 +4,13 @@
 
 run following commands:
 
-npm create vite@latest
-Y
-React
-Typescript
-Cd my-app
-Npm install
-Code .
+npm create vite@latest <br>
+Y <br>
+React <br>
+Typescript <br>
+Cd my-app <br>
+Npm install <br>
+Code . <br>
 Npm run dev
 
 
@@ -18,6 +18,6 @@ Npm run dev
 
 run following commands:
 
-npm init -y
-npm install
+npm init -y <br>
+npm install <br>
 npm run dev
