@@ -1,3 +1,5 @@
+// rule of thumb: only call hooks inside of component functions - only call hooks on the top level (beginning of function)
+import { useState } from "react";
 // import componentImg from "./assets/components.png";
 import { CORE_CONCEPTS } from "./data.js";
 import Header from "./components/Header.jsx";
@@ -16,9 +18,13 @@ import TabButton from "./components/TabButton.jsx";
 // }
 
 function App() {
+  // Please click a button: selectedTopic's default value
+  // setSelectedTopic will carry the value that will be passed to selectedTopic as its new updated value
+  const [selectedTopic, setSelectedTopic] = useState("Please click a button");
   // trigger function on selecting component
   function handleSelect(selectedButton) {
-    console.log(selectedButton);
+    setSelectedTopic(selectedButton);
+    // console.log(selectedButton);
   }
   return (
     <div>
@@ -54,6 +60,8 @@ function App() {
             <TabButton onSelect={() => handleSelect("props")}>Props</TabButton>
             <TabButton onSelect={() => handleSelect("state")}>State</TabButton>
           </menu>
+          {/* output updated value */}
+          {selectedTopic}
         </section>
       </main>
     </div>
