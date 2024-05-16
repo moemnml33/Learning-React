@@ -5,6 +5,7 @@ import { CORE_CONCEPTS } from "./data.js";
 import Header from "./components/Header.jsx";
 import CoreConcept from "./components/CoreConcepts.jsx";
 import TabButton from "./components/TabButton.jsx";
+import { EXAMPLES } from "./data.js";
 
 // props
 // function CoreConcept(props) {
@@ -20,7 +21,7 @@ import TabButton from "./components/TabButton.jsx";
 function App() {
   // Please click a button: selectedTopic's default value
   // setSelectedTopic will carry the value that will be passed to selectedTopic as its new updated value
-  const [selectedTopic, setSelectedTopic] = useState("Please click a button");
+  const [selectedTopic, setSelectedTopic] = useState("components");
   // trigger function on selecting component
   function handleSelect(selectedButton) {
     setSelectedTopic(selectedButton);
@@ -61,7 +62,14 @@ function App() {
             <TabButton onSelect={() => handleSelect("state")}>State</TabButton>
           </menu>
           {/* output updated value */}
-          {selectedTopic}
+          {/* {selectedTopic} */}
+          <div id="tab-content">
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>{EXAMPLES[selectedTopic].code}</code>
+            </pre>
+          </div>
         </section>
       </main>
     </div>
