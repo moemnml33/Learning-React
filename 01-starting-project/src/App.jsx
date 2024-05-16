@@ -21,12 +21,27 @@ import { EXAMPLES } from "./data.js";
 function App() {
   // Please click a button: selectedTopic's default value
   // setSelectedTopic will carry the value that will be passed to selectedTopic as its new updated value
-  const [selectedTopic, setSelectedTopic] = useState("components");
+  const [selectedTopic, setSelectedTopic] = useState("");
   // trigger function on selecting component
   function handleSelect(selectedButton) {
     setSelectedTopic(selectedButton);
     // console.log(selectedButton);
   }
+
+  let tabContent = <p>Please select a topic.</p>;
+
+  if (selectedTopic) {
+    tabContent = (
+      <div id="tab-content">
+        <h3>{EXAMPLES[selectedTopic].title}</h3>
+        <p>{EXAMPLES[selectedTopic].description}</p>
+        <pre>
+          <code>{EXAMPLES[selectedTopic].code}</code>
+        </pre>
+      </div>
+    );
+  }
+
   return (
     <div>
       {/* reuse component */}
@@ -63,13 +78,22 @@ function App() {
           </menu>
           {/* output updated value */}
           {/* {selectedTopic} */}
-          <div id="tab-content">
-            <h3>{EXAMPLES[selectedTopic].title}</h3>
-            <p>{EXAMPLES[selectedTopic].description}</p>
-            <pre>
-              <code>{EXAMPLES[selectedTopic].code}</code>
-            </pre>
-          </div>
+
+          {/* if selected topic is not true (null) output this message */}
+          {/* {!selectedTopic && <p>Please select a topic.</p>} */}
+          {/* if selected topic is true (not null) output the content  */}
+          {/* {selectedTopic && (
+            <div id="tab-content">
+              <h3>{EXAMPLES[selectedTopic].title}</h3>
+              <p>{EXAMPLES[selectedTopic].description}</p>
+              <pre>
+                <code>{EXAMPLES[selectedTopic].code}</code>
+              </pre>
+            </div>
+          )} */}
+
+          {/* for conditional rendering we could just do this instead */}
+          {tabContent}
         </section>
       </main>
     </div>
